@@ -346,10 +346,10 @@ InitializeAndValidateGitBeforeShaReference() {
 }
 
 InitializeRootCommitSha() {
-  debug "GITHUB_SHA: ${GITHUB_SHA}"
-  debug "GITHUB_HEAD_REF: ${GITHUB_HEAD_REF}"
-  debug "GITHUB_REF_NAME: ${GITHUB_REF_NAME}"
-  debug "GITHUB_EVENT_NAME: ${GITHUB_EVENT_NAME}"
+  info "GITHUB_SHA: ${GITHUB_SHA}"
+  info "GITHUB_HEAD_REF: ${GITHUB_HEAD_REF}"
+  info "GITHUB_REF_NAME: ${GITHUB_REF_NAME}"
+  info "GITHUB_EVENT_NAME: ${GITHUB_EVENT_NAME}"
 
   GIT_ROOT_COMMIT_SHA="$(git -C "${GITHUB_WORKSPACE}" rev-list --max-parents=0 "${GITHUB_HEAD_REF}")"
   local RET_CODE=$?
