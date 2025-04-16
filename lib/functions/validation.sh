@@ -346,6 +346,11 @@ InitializeAndValidateGitBeforeShaReference() {
 }
 
 InitializeRootCommitSha() {
+  debug "GITHUB_SHA: ${GITHUB_SHA}"
+  debug "GITHUB_HEAD_REF: ${GITHUB_HEAD_REF}"
+  debug "GITHUB_REF_NAME: ${GITHUB_REF_NAME}"
+  debug "GITHUB_EVENT_NAME: ${GITHUB_EVENT_NAME}"
+
   GIT_ROOT_COMMIT_SHA="$(git -C "${GITHUB_WORKSPACE}" rev-list --max-parents=0 "${GITHUB_HEAD_REF}")"
   local RET_CODE=$?
   if [[ "${RET_CODE}" -gt 0 ]]; then
