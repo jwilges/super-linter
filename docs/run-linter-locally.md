@@ -14,7 +14,7 @@ docker run \
   -e RUN_LOCAL=true \
   -v /path/to/local/codebase:/tmp/lint \
   --rm \
-  ghcr.io/super-linter/super-linter:latest
+  ghcr.io/jwilges/super-linter:latest
 ```
 
 This example uses the `latest` container image version. If you're trying to
@@ -24,7 +24,7 @@ recommend that you **refer to a specific version instead**.
 Notes:
 
 - To run against a single file you can use:
-  `docker run -e RUN_LOCAL=true -e USE_FIND_ALGORITHM=true -v /path/to/local/codebase/file:/tmp/lint/file ghcr.io/super-linter/super-linter`
+  `docker run -e RUN_LOCAL=true -e USE_FIND_ALGORITHM=true -v /path/to/local/codebase/file:/tmp/lint/file ghcr.io/jwilges/super-linter`
 - You need to pass the `RUN_LOCAL` option to bypass some of the GitHub Actions
   checks, as well as the mapping of your local codebase to `/tmp/lint`.
 - If you want to override the `/tmp/lint` folder, you can set the
@@ -46,7 +46,7 @@ snippet:
 super-linter:
   stage: lint
   image:
-    name: ghcr.io/super-linter/super-linter:latest # set a stable version tag and the sha checksum in production for reproducible runs
+    name: ghcr.io/jwilges/super-linter:latest # set a stable version tag and the sha checksum in production for reproducible runs
     entrypoint: [""]
   script:
     - git fetch origin $CI_DEFAULT_BRANCH # clone the default branch from this repository
@@ -85,7 +85,7 @@ them accordingly:
        -e RUN_LOCAL=true \
        --env-file ".github/super-linter.env" \
        -v "$(pwd)":/tmp/lint \
-       ghcr.io/super-linter/super-linter:latest
+       ghcr.io/jwilges/super-linter:latest
    ```
 
 1. Load the super-linter configuration file when running in GitHub Actions by
@@ -142,7 +142,7 @@ Here is an example that runs the test suite against the `v5.4.3` container image
 version.
 
 ```shell
-CONTAINER_IMAGE_ID="ghcr.io/super-linter/super-linter:v5.4.3" \
+CONTAINER_IMAGE_ID="ghcr.io/jwilges/super-linter:v5.4.3" \
 BUILD_DATE="2023-10-17T17:00:53Z" \
 BUILD_REVISION=b0d1acee1f8050d1684a28ddbf8315f81d084fe9 \
 BUILD_VERSION=b0d1acee1f8050d1684a28ddbf8315f81d084fe9 \

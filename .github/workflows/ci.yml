@@ -97,7 +97,7 @@ jobs:
           - stage-name: php-linters
     timeout-minutes: 120
     env:
-      CONTAINER_IMAGE_ID: "ghcr.io/super-linter/super-linter:latest"
+      CONTAINER_IMAGE_ID: "ghcr.io/jwilges/super-linter:latest"
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -140,10 +140,10 @@ jobs:
             target: standard
     timeout-minutes: 120
     env:
-      CONTAINER_IMAGE_ID: "ghcr.io/super-linter/super-linter:${{ matrix.images.prefix }}latest"
+      CONTAINER_IMAGE_ID: "ghcr.io/jwilges/super-linter:${{ matrix.images.prefix }}latest"
       CONTAINER_IMAGE_TARGET: "${{ matrix.images.target }}"
       CONTAINER_IMAGE_OUTPUT_IMAGE_NAME: "super-linter-${{ matrix.images.prefix }}latest"
-      STAGES_BUILD_CACHE_CONTAINER_IMAGE_ID: "ghcr.io/super-linter/super-linter:latest"
+      STAGES_BUILD_CACHE_CONTAINER_IMAGE_ID: "ghcr.io/jwilges/super-linter:latest"
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -221,7 +221,7 @@ jobs:
             prefix: slim-
             target: slim
     env:
-      CONTAINER_IMAGE_ID: "ghcr.io/super-linter/super-linter:${{ matrix.images.prefix }}latest"
+      CONTAINER_IMAGE_ID: "ghcr.io/jwilges/super-linter:${{ matrix.images.prefix }}latest"
       CONTAINER_IMAGE_TARGET: "${{ matrix.images.target }}"
       CONTAINER_IMAGE_OUTPUT_IMAGE_NAME: "super-linter-${{ matrix.images.prefix }}latest"
     steps:
@@ -322,7 +322,7 @@ jobs:
           # in the same execution environment prevents it from succeeding
           - test-case: test
     env:
-      CONTAINER_IMAGE_ID: "ghcr.io/super-linter/super-linter:${{ matrix.images.prefix }}latest"
+      CONTAINER_IMAGE_ID: "ghcr.io/jwilges/super-linter:${{ matrix.images.prefix }}latest"
       CONTAINER_IMAGE_TARGET: "${{ matrix.images.target }}"
       CONTAINER_IMAGE_OUTPUT_IMAGE_NAME: "super-linter-${{ matrix.images.prefix }}latest"
       BUILD_DATE: ${{ needs.set-build-metadata.outputs.CONTAINER_IMAGE_BUILD_DATE }}
