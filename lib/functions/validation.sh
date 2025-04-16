@@ -346,7 +346,7 @@ InitializeAndValidateGitBeforeShaReference() {
 }
 
 InitializeRootCommitSha() {
-  GIT_ROOT_COMMIT_SHA="$(git -C "${GITHUB_WORKSPACE}" rev-list --max-parents=0 "${GITHUB_SHA}")"
+  GIT_ROOT_COMMIT_SHA="$(git -C "${GITHUB_WORKSPACE}" rev-list --max-parents=0 "${GITHUB_HEAD_REF}")"
   local RET_CODE=$?
   if [[ "${RET_CODE}" -gt 0 ]]; then
     error "Failed to get the root commit: ${GIT_ROOT_COMMIT_SHA}"
